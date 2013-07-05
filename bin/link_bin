@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source $( cd "$( dirname "$0" )" && pwd )/../defs
+
+BIN=$HOME/bin
+if [ ! -e $BIN ]; then
+  mkdir $BIN
+fi
+
+echo -n "Linking science environment's bin directory into ~/bin..."
+ln -s $WORLD_MACHINE/bin/executables $HOME/bin/science-environment
+echo 'Done'

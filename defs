@@ -1,0 +1,3 @@
+#!/bin/bash
+
+SCIENCE_ENVIRONMENT=$HOME/.science-environment
