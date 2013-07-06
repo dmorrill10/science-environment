@@ -12,7 +12,7 @@ if [ ! $crontab_frequency ]; then
   exit
 fi
 
-command=find $absolute_path_to_root_directory -name $file_pattern -mmin -$num_minutes_since_modification -type f | xargs tail -v | mail -s "Files modified within $num_minutes_since_modification" your@email.com 
+command="find $absolute_path_to_root_directory -name $file_pattern -mmin -$num_minutes_since_modification -type f | xargs tail -v | mail -s "Files modified within $num_minutes_since_modification" your@email.com"
 
 # Setup crontab
 crontab_file=$HOME/.crontab
