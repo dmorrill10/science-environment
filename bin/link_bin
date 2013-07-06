@@ -8,5 +8,5 @@ if [ ! -e $BIN ]; then
 fi
 
 echo -n "Linking science environment's bin directory into ~/bin..."
-ln -s $WORLD_MACHINE/bin/executables $HOME/bin/science-environment
+ln -s $SCIENCE_ENVIRONMENT/bin/executables $HOME/bin/science-environment
 echo 'Done'
