@@ -1,0 +1,24 @@
+#!/bin/bash
+
+absolute_path_to_root_directory=$1
+file_pattern=$2
+num_minutes_since_modification=$3
+crontab_frequency=$4
+
+if [ ! $file_to_monitor ]; then
+  echo "Usage: $0 <abs path to root directory> <file pattern> <num minutes since last modification> <crontab frequency>"
+  echo ''
+  echo "Emails the tail of matching files that were modified within the specified time frame according to the crontab frequency."
+  exit
+fi
+
+command=find $absolute_path_to_root_directory -name $file_pattern -mmin -$num_minutes_since_modification -type f | xargs tail -v | mail -s "Files modified within $num_minutes_since_modification" your@email.com 
+
+# Setup crontab
+crontab_file=$HOME/.crontab
+if [ ! -e $cron_dir ]; then
+  touch $cron_dir
+fi
+echo "$crontab_frequency $command" >> $crontab_file
+crontab $crontab_file
+
